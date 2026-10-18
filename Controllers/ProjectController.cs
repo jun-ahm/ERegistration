@@ -124,6 +124,22 @@ namespace ERegistration.Controllers
                 ModelState.AddModelError("", $"Adding the project failed, please try again! Error: {ex.Message}");
             }
 
+            var states = await _lookupValueRepository.GetLookupForDropdownAsync();
+            IEnumerable<SelectListItem> selectStates = new SelectList(states.Where(p => p.Entity == "States"), "Id", "Name", null);
+            projectAddViewModel.States = selectStates;
+
+            var projectTypes = await _lookupValueRepository.GetLookupForDropdownAsync();
+            IEnumerable<SelectListItem> selectProjectTypes = new SelectList(projectTypes.Where(p => p.Entity == "ProjectTypes"), "Id", "Name", null);
+            projectAddViewModel.ProjectTypes = selectProjectTypes;
+
+            var projectSubTypes1 = await _lookupValueRepository.GetLookupForDropdownAsync();
+            IEnumerable<SelectListItem> selectProjectSubTypes1 = new SelectList(projectSubTypes1.Where(p => p.Entity == "ProjectSubTypes1"), "Id", "Name", null);
+            projectAddViewModel.ProjectSubTypes1 = selectProjectSubTypes1;
+
+            var projectSubTypes2 = await _lookupValueRepository.GetLookupForDropdownAsync();
+            IEnumerable<SelectListItem> selectProjectSubTypes2 = new SelectList(projectSubTypes2.Where(p => p.Entity == "ProjectSubTypes2"), "Id", "Name", null);
+            projectAddViewModel.ProjectSubTypes2 = selectProjectSubTypes2;
+
             return View(projectAddViewModel);
         }
 

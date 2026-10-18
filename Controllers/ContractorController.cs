@@ -107,10 +107,12 @@ namespace ERegistration.Controllers
                 ModelState.AddModelError("", $"Adding the contractor failed, please try again! Error: {ex.Message}");
             }
 
+            var states = await _lookupValueRepository.GetLookupForDropdownAsync();
+            IEnumerable<SelectListItem> selectStates = new SelectList(states.Where(p => p.Entity == "States"), "Id", "Name", null);
+            contractorAddViewModel.States = selectStates;
+
             var businessTypes = await _lookupValueRepository.GetLookupForDropdownAsync();
-
             IEnumerable<SelectListItem> selectListItems = new SelectList(businessTypes, "Id", "Name", null);
-
             contractorAddViewModel.BusinessTypes = selectListItems;
 
             return View(contractorAddViewModel);
