@@ -1,0 +1,23 @@
+using ERegistration.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace ERegistration.ViewModels
+{
+    public class TitleCompanyDetailsViewModel
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Title { get; set; }
+        public string? FirstName { get; set; }
+        public string? MiddleName { get; set; }
+        public string? LastName { get; set; }
+        public string? Phone { get; set; }
+        public string? CellPhone { get; set; }
+        public string? Email { get; set; }
+        public string? Address_Line1 { get; set; }
+        public string? Address_Line2 { get; set; }
+        public string? Address_City { get; set; }        
+        public string? Address_State { get; set; }
+        public string? Address_ZipCode { get; set; }        
+    }
+}
