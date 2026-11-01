@@ -1,0 +1,103 @@
+@using ERegistration.ViewModels
+@model TitleCompanyAddViewModel
+
+<h2>Add a new title company</h2>
+<hr />
+
+@if (ViewData["ErrorMessage"] != null)
+{
+<p class="text-danger">@ViewData["ErrorMessage"]</p>
+}
+
+<form method="post" asp-controller="TitleCompany" asp-action="Add">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.FirstName" class="form-control" />
+            <label asp-for="TitleCompany.FirstName" class="control-label fw-bold">First Name</label>
+            <span asp-validation-for="TitleCompany.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.MiddleName" class="form-control" />
+            <label asp-for="TitleCompany.MiddleName" class="control-label">Middle Name</label>
+            <span asp-validation-for="TitleCompany.MiddleName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.LastName" class="form-control" />
+            <label asp-for="TitleCompany.LastName" class="control-label fw-bold">Last Name</label>
+            <span asp-validation-for="TitleCompany.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 form-floating">
+            <input asp-for="TitleCompany.Name" class="form-control" />
+            <label asp-for="TitleCompany.Name" class="control-label fw-bold">Business Name</label>
+            <span asp-validation-for="TitleCompany.Name" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.Title" class="form-control" />
+            <label asp-for="TitleCompany.Title" class="control-label"></label>
+            <span asp-validation-for="TitleCompany.Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <fieldset class="p-3">
+            <legend>Address</legend>
+            <div class="row">
+                <div class="col-md-6 form-floating">
+                    <input asp-for="TitleCompany.Address_Line1" class="form-control" />
+                    <label asp-for="TitleCompany.Address_Line1" class="control-label fw-bold"></label>
+                    <span asp-validation-for="TitleCompany.Address_Line1" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-floating">
+                    <input asp-for="TitleCompany.Address_Line2" class="form-control" />
+                    <label asp-for="TitleCompany.Address_Line2" class="control-label"></label>
+                    <span asp-validation-for="TitleCompany.Address_Line2" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-floating">
+                    <input asp-for="TitleCompany.Address_City" class="form-control" />
+                    <label asp-for="TitleCompany.Address_City" class="control-label fw-bold"></label>
+                    <span asp-validation-for="TitleCompany.Address_City" class="text-danger"></span>
+                </div>
+                <div class="col-md-3 form-floating">
+                    <select asp-for="TitleCompany.Address_StateId" class="form-select" asp-items="Model.States">
+                        <option value="" selected></option>
+                    </select>
+                    <label asp-for="States" class="fw-bold">State</label>
+                    <span asp-validation-for="TitleCompany.Address_StateId" class="text-danger"></span>
+                </div>
+                <div class="col-md-3 form-floating">
+                    <input asp-for="TitleCompany.Address_ZipCode" class="form-control" />
+                    <label asp-for="TitleCompany.Address_ZipCode" class="control-label fw-bold"></label>
+                    <span asp-validation-for="TitleCompany.Address_ZipCode" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.Phone" class="form-control" />
+            <label asp-for="TitleCompany.Phone" class="control-label">Office#</label>
+            <span asp-validation-for="TitleCompany.Phone" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.CellPhone" class="form-control" />
+            <label asp-for="TitleCompany.CellPhone" class="control-label">Cell#</label>
+            <span asp-validation-for="TitleCompany.CellPhone" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="TitleCompany.Email" class="form-control" />
+            <label asp-for="TitleCompany.Email" class="control-label fw-bold">Email</label>
+            <span asp-validation-for="TitleCompany.Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="button" asp-action="Index" asp-controller="NoticeOfCommencement" class="btn btn-secondary">Cancel</button>
+    <button type="submit" asp-controller="TitleCompany" asp-action="Add" class="btn btn-primary">Save</button>
+
+</form>
+<div>
+    <a asp-controller="NoticeOfCommencement" asp-action="Index">Back to Notice Of Commencement Creations</a>
+</div>

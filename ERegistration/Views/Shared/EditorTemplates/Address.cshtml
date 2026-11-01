@@ -1,0 +1,30 @@
+@using ERegistration.ViewModels
+@model AddressViewModel
+
+<div class="address-editor">
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            @Html.EditorFor(m => m.Address.Line1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Address.Line1)
+            <span asp-validation-for=Address.Line1 class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            @Html.EditorFor(m => m.Address.Line2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Address.Line2)
+            <span asp-validation-for=Address.Line2 class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            @Html.EditorFor(m => m.Address.City, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Address.City)
+            <span asp-validation-for=Address.City class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            @Html.EditorFor(m => m.Address.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Address.ZipCode)
+            <span asp-validation-for=Address.ZipCode class="text-danger"></span>
+        </div>
+    </div>
+
+</div>

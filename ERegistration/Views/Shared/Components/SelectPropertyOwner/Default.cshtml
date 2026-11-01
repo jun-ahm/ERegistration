@@ -1,0 +1,7 @@
+@using ERegistration.ViewModels.PropertyOwnerAddViewModel
+
+<div class="col-md-8">
+    @Html.LabelFor(model => model.SelectedPropertyOwnerId, "PropertyOwner")
+    @Html.DropDownListFor(model => model.SelectedPropertyOwnerId, Model.PropertyOwners, "Select a Property Owner", new { @class = "form-select" })
+    @Html.ValidationMessageFor(model => model.SelectedPropertyOwnerId, "", new { @class = "text-danger" })
+</div>

@@ -1,0 +1,40 @@
+@model IEnumerable<NoticeOfCommencement>
+<h2>Notice of Commencements</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">No notice of commencements exists at this point.</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Contractor
+            </th>
+            <th>
+                Project
+            </th>
+            @* <th>
+                    Property Owner
+                </th> *@
+            <th>Actions</th>
+        </tr>
+        @foreach (var noc in Model)
+        {
+        <tr>
+            <td>@noc.Id</td>
+            <td>@($"{noc.Contractor.BusinessName} - {noc.Contractor.FirstName} {noc.Contractor.LastName}")</td>
+            <td>@($"{noc.Project.Address_Line1}, {noc.Project.Address_Line2} {noc.Project.Address_City} {noc.Project.Address_State.Name}")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@noc.Id">Details</a>
+                <a asp-action="Edit" asp-route-id="@noc.Id">Edit</a>
+            </td>
+        </tr>
+        }
+    </table>
+}

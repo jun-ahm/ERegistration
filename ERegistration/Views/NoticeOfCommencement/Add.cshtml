@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Notice Of Commencement";
+}
+<h1>@ViewData["Title"]</h1>
+<br />
+
+@model ERegistration.ViewModels.NoticeOfCommencementViewModel
+
+<h3>Create Notice Of Commencement</h3>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    @Html.LabelFor(model => model.SelectedContractorId, "Contractor")
+                    @Html.DropDownListFor(model => model.SelectedContractorId, Model.Contractors, "Select a Contractor", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.SelectedContractorId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    Or &nbsp;
+                    <a class="btn btn-primary" asp-controller="Contractor" asp-action="Add">
+                        Add Contractor
+                    </a>
+                </div>
+            </div>
+            <br />
+            <div id="propertyOwnerContainer">
+                <div class="row">
+                    @await Component.InvokeAsync("SelectPropertyOwner")
+                    <div class="col-md-4">
+                        <br />
+                        Or &nbsp;
+                        <a class="btn btn-primary" asp-controller="PropertyOwner" asp-action="Add">
+                            Add Property Owner
+                        </a>
+                    </div>
+                </div>
+                <a href="javascript:void(0);" id="addPropertyOwner">Add Additional Property Owner</a>
+                <br />
+                <br />
+
+                <div class="row">
+                    <div class="col-md-8">
+                        @Html.LabelFor(model => model.SelectedProjectId, "Project")
+                        @Html.DropDownListFor(model => model.SelectedProjectId, Model.Projects, "Select a Project", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.SelectedProjectId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        Or &nbsp;
+                        <a class="btn btn-primary" asp-controller="Project" asp-action="Add">
+                            Add Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        @Html.LabelFor(model => model.SelectedLenderId, "Lender")
+                        @Html.DropDownListFor(model => model.SelectedLenderId, Model.Lenders, "Select a Lender", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.SelectedLenderId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        Or &nbsp;
+                        <a class="btn btn-primary" asp-controller="Lender" asp-action="Add">
+                            Add Lender
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        @Html.LabelFor(model => model.SelectedTitleCompanyId, "Title Company")
+                        @Html.DropDownListFor(model => model.SelectedTitleCompanyId, Model.TitleCompanies, "Select a Title Company", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.SelectedTitleCompanyId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        Or &nbsp;
+                        <a class="btn btn-primary" asp-controller="TitleCompany" asp-action="Add">
+                            Add Title Company
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group mt-3 col-md-3">
+                    <input type="submit" value="Create" class="btn-submit" />
+                </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        const element = document.getElementById("SelectedPropertyOwnerId");
+        if (element) {
+            element.id = "SelectedPropertyOwnerId[0]";
+            element.name = "SelectedPropertyOwnerId[0]";
+        }
+
+        let propertyOwnerIndex = 1;
+        $('#addPropertyOwner').click(function () {
+            $.ajax({
+                url: '/NoticeOfCommencement/AddPropertyOwner',
+                type: 'GET',
+                success: function (data) {
+                    const matchId = data.match(/id\s*=\s*["']([^"']+)["']/i);
+                    let propertyOwnerDropdownId = data.replaceAll(matchId[1], matchId[1] + '[' + propertyOwnerIndex + ']');
+                    $('#propertyOwnerContainer').append(propertyOwnerDropdownId);
+                    propertyOwnerIndex++;
+                }
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

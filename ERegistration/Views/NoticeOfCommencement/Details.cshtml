@@ -1,0 +1,229 @@
+@using ERegistration.ViewModels
+@model NoticeOfCommencementDetailsViewModel
+
+@if (Model == null)
+{
+<tr><td colspan="3" class="text-center">No notice of commencement with the Id exists at this point</td></tr>
+}
+else
+{
+<h2>Details for @($"{Model.Project.Address_Line1}, {Model.Project.Address_Line2}, {Model.Project.Address_City} {Model.Project.Address_State}")</h2>
+<hr />
+<h3>Contractor Details</h3>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Name: </label></b>
+        @($"{Model.Contractor.FirstName} {Model.Contractor.LastName}")
+    </div>
+    <div class="col-md-6">
+        <b><label>License #: </label></b>
+        @Model.Contractor.LicenseNumber
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Address: </label></b>
+        @($"{Model.Contractor.Address_Line1}, {Model.Contractor.Address_Line2}, {Model.Contractor.Address_City}")
+    </div>
+    <div class="col-md-3">
+        <b><label>State: </label></b>
+        @Model.Contractor.Address_State
+    </div>
+    <div class="col-md-3">
+        <b><label>ZipCode: </label></b>
+        @Model.Contractor.Address_ZipCode
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Email: </label></b>
+        @Model.Contractor.Email
+    </div>
+    <div class="col-md-3">
+        <b><label>Office #: </label></b>
+        @Model.Contractor.OfficePhone
+    </div>
+    <div class="col-md-3">
+        <b><label>CellPhone: </label></b>
+        @Model.Contractor.CellPhone
+    </div>
+</div>
+<br />
+<h3>Property Owner(s) Details</h3>
+@* @if (Model.PropertyOwners.Count > 0) *@
+@foreach (var propertyOwner in Model.PropertyOwners)
+    {
+<div class="row">
+    <div class="col-md-12">
+        <b><label>Owner Name: </label></b>
+        @($"{propertyOwner.FirstName} {propertyOwner.LastName}")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Address: </label></b>
+        @($"{propertyOwner.Address_Line1}, {propertyOwner.Address_Line2}, {propertyOwner.Address_City}")
+    </div>
+    <div class="col-md-3">
+        <b><label>State: </label></b>
+        @propertyOwner.Address_State
+    </div>
+    <div class="col-md-3">
+        <b><label>ZipCode: </label></b>
+        @propertyOwner.Address_ZipCode
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Email: </label></b>
+        @propertyOwner.Email
+    </div>
+    <div class="col-md-6">
+        <b><label>Phone #: </label></b>
+        @propertyOwner.Phone
+    </div>
+</div>
+<br />
+    }
+<br />
+<h3>Project Details</h3>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Project Address: </label></b>
+        @($"{Model.Project.Address_Line1}, {Model.Project.Address_Line2}, {Model.Project.Address_City}")
+    </div>
+    <div class="col-md-3">
+        <b><label>State: </label></b>
+        @Model.Project.Address_State
+    </div>
+    <div class="col-md-3">
+        <b><label>ZipCode: </label></b>
+        @Model.Project.Address_ZipCode
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Tax Parcel #: </label></b>
+        @Model.Project.TaxParcelId
+    </div>
+    <div class="col-md-6">
+        <b><label>County : </label></b>
+        @Model.Project.County
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <b><label>Legal Description : </label></b>
+        @Model.Project.LegalDescription
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Start Date: </label></b>
+        @Model.Project.StartDate
+    </div>
+    <div class="col-md-6">
+        <b><label>Estimated Completion Date : </label></b>
+        @Model.Project.CompletionDate
+    </div>
+</div>
+
+<br />
+<h3>Lender Details</h3>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Name: </label></b>
+        @Model.Lender.Name
+    </div>
+    <div class="col-md-6">
+        <b><label>Contact Name: </label></b>
+        @($"{Model.Lender.FirstName} {Model.Lender.LastName}")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Address: </label></b>
+        @($"{Model.Lender.Address_Line1}, {Model.Lender.Address_Line2}, {Model.Project.Address_City}")
+    </div>
+    <div class="col-md-3">
+        <b><label>State: </label></b>
+        @Model.Lender.Address_State
+    </div>
+    <div class="col-md-3">
+        <b><label>ZipCode: </label></b>
+        @Model.Lender.Address_ZipCode
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Email: </label></b>
+        @Model.Lender.Email
+    </div>
+    <div class="col-md-3">
+        <b><label>Office #: </label></b>
+        @Model.Lender.Phone
+    </div>
+    <div class="col-md-3">
+        <b><label>CellPhone: </label></b>
+        @Model.Lender.CellPhone
+    </div>
+</div>
+
+<br />
+<h3>Title Company Details</h3>
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Name: </label></b>
+        @Model.TitleCompany.Name
+    </div>
+    <div class="col-md-3">
+        <b><label>Title: </label></b>
+        @Model.TitleCompany.Title
+    </div>
+    <div class="col-md-3">
+        <b><label>Contact Name: </label></b>
+        @($"{Model.TitleCompany.FirstName} {Model.TitleCompany.LastName}")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Address: </label></b>
+        @($"{Model.TitleCompany.Address_Line1}, {Model.TitleCompany.Address_Line2}, {Model.TitleCompany.Address_City}")
+    </div>
+    <div class="col-md-3">
+        <b><label>State: </label></b>
+        @Model.TitleCompany.Address_State
+    </div>
+    <div class="col-md-3">
+        <b><label>ZipCode: </label></b>
+        @Model.TitleCompany.Address_ZipCode
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <b><label>Email: </label></b>
+        @Model.TitleCompany.Email
+    </div>
+    <div class="col-md-3">
+        <b><label>Office #: </label></b>
+        @Model.TitleCompany.Phone
+    </div>
+    <div class="col-md-3">
+        <b><label>CellPhone: </label></b>
+        @Model.TitleCompany.CellPhone
+    </div>
+</div>
+
+<div>
+    <br />
+    <div class="form-group mt-3 col-md-3">
+        <div class="btn-group w-100" role="group">
+            <a class="btn btn-submit mr-2" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>&nbsp;&nbsp;
+            <a target="_blank" class="btn btn-submit" asp-action="Download" asp-route-id="@Model.Id">Download</a>
+        </div>
+    </div>
+    <a asp-controller="NoticeOfCommencement" asp-action="Index">Back to overview</a>
+</div>
+}

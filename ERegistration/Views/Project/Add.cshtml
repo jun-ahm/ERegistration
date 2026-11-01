@@ -1,0 +1,123 @@
+@using ERegistration.ViewModels
+@model ProjectAddViewModel
+<title>Add Project</title>
+<h2>Add a new project</h2>
+<hr />
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <p class="text-danger">@ViewData["ErrorMessage"]</p>
+}
+<form method="post" asp-controller="Project" asp-action="Add">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-12 form-floating">
+            <input asp-for="Project.Name" class="form-control" />
+            <label asp-for="Project.Name" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.Address_Line1" class="form-control" />
+            <label asp-for="Project.Address_Line1" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.Address_Line2" class="form-control" />
+            <label asp-for="Project.Address_Line2" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Address_Line2" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.Address_Line3" class="form-control" />
+            <label asp-for="Project.Address_Line3" class="control-label"></label>
+            <span asp-validation-for="Project.Address_Line3" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-floating">
+            <input asp-for="Project.Address_City" class="form-control" />
+            <label asp-for="Project.Address_City" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <select asp-for="Project.Address_StateId" class="form-select" asp-items="Model.States">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="States" class="fw-bold">State</label>
+            <span asp-validation-for="Project.Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="Project.Address_ZipCode" class="form-control" />
+            <label asp-for="Project.Address_ZipCode" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Address_ZipCode" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="Project.County" class="form-control" />
+            <label asp-for="Project.County" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.County" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.Lot" class="form-control" />
+            <label asp-for="Project.Lot" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Lot" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.Block" class="form-control" />
+            <label asp-for="Project.Block" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.Block" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.AdditionalDescription" class="form-control" />
+            <label asp-for="Project.AdditionalDescription" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.AdditionalDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <select asp-for="Project.ProjectTypeId" class="form-select" asp-items="Model.ProjectTypes">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="ProjectTypes">Project Type</label>
+            <span asp-validation-for="ProjectTypes" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <select asp-for="Project.ProjectSubType1Id" class="form-select" asp-items="Model.ProjectSubTypes1">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="ProjectSubTypes1">Project Sub Type1</label>
+            <span asp-validation-for="ProjectSubTypes1" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <select asp-for="Project.ProjectSubType2Id" class="form-select" asp-items="Model.ProjectSubTypes2">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="ProjectSubTypes2">Project Sub Type2</label>
+            <span asp-validation-for="ProjectSubTypes2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.StartDate" type="date" class="form-control" />
+            <label asp-for="Project.StartDate" class="control-label"></label>
+            <span asp-validation-for="Project.StartDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.CompletionDate" type="date" class="form-control" />
+            <label asp-for="Project.CompletionDate" class="control-label"></label>
+            <span asp-validation-for="Project.CompletionDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Project.PinNumber" class="form-control" />
+            <label asp-for="Project.PinNumber" class="control-label fw-bold"></label>
+            <span asp-validation-for="Project.PinNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="button" asp-action="Index" asp-controller="NoticeOfCommencement" class="btn btn-secondary">Cancel</button>
+    <button type="submit" asp-controller="Project" asp-action="Add" class="btn btn-primary">Save</button>
+</form>
+<div>
+    <a asp-controller="NoticeOfCommencement" asp-action="Index">Back to Notice Of Commencement Creations</a>
+</div>

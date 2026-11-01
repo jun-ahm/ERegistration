@@ -1,0 +1,282 @@
+@using ERegistration.ViewModels
+@model NoticeOfCommencementEditViewModel
+
+<h2>Update for @($"{Model.Project.Address_Line1}, {Model.Project.Address_Line2}, {Model.Project.Address_City}")</h2>
+<hr />
+<form method="post" asp-controller="NoticeOfCommencement" asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.Id" />
+    <h5>Contractor Details</h5>
+    <input type="hidden" asp-for="@Model.Contractor.Id" />
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Contractor.FirstName" class="form-control" />
+            <label asp-for="@Model.Contractor.FirstName" class="form-label fw-bold"></label>
+            <span asp-validation-for="@Model.Contractor.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Contractor.MiddleName" class="form-control" />
+            <label asp-for="Contractor.MiddleName" class="control-label"></label>
+            <span asp-validation-for="Contractor.MiddleName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="Contractor.LastName" class="form-control" />
+            <label asp-for="Contractor.LastName" class="control-label fw-bold"></label>
+            <span asp-validation-for="Contractor.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Contractor.BusinessName" class="form-control" />
+            <label asp-for="@Model.Contractor.BusinessName" class="control-label"></label>
+            <span asp-validation-for="@Model.Contractor.BusinessName" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Contractor.LicenseNumber" class="form-control" />
+            <label asp-for="@Model.Contractor.LicenseNumber" class="form-label"></label>
+            <span asp-validation-for="@Model.Contractor.LicenseNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Contractor.Address_Line1" class="form-control" />
+            <label asp-for="@Model.Contractor.Address_Line1" class="form-label"></label>
+            <span asp-validation-for="@Model.Contractor.Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Contractor.Address_Line2" class="form-control" />
+            <label asp-for="@Model.Contractor.Address_Line2" class="form-label"></label>
+            <span asp-validation-for="@Model.Contractor.Address_Line2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Contractor.Address_City" class="form-control" />
+            <label asp-for="@Model.Contractor.Address_City" class="control-label"></label>
+            <span asp-validation-for="@Model.Contractor.Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <select asp-for="@Model.Contractor.Address_StateId" class="form-select" asp-items="@Model.Contractor.Address_State"></select>
+            <label asp-for="@Model.Contractor.Address_StateId"></label>
+            <span asp-validation-for="@Model.Contractor.Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Contractor.Address_ZipCode" class="form-control" />
+            <label asp-for="@Model.Contractor.Address_ZipCode" class="control-label"></label>
+            <span asp-validation-for="@Model.Contractor.Address_ZipCode" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+
+    <h5>Property Owner(s) Details</h5>
+    @for (int i = 0; i < @Model.PropertyOwners.Count(); i++)
+    {
+    <h6>Property Owner number @(i+1)</h6>
+    <input type="hidden" asp-for="@Model.PropertyOwners[i].PropertyOwnerId" />
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].FirstName" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].FirstName" class="form-label fw-bold"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].MiddleName" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].MiddleName" class="form-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].MiddleName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].LastName" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].LastName" class="form-label fw-bold"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Address_Line1" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Address_Line1" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Address_Line2" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Address_Line2" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Address_Line2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Address_City" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Address_City" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <select asp-for="@Model.PropertyOwners[i].Address_StateId" class="form-select" asp-items="@Model.PropertyOwners[i].Address_State"></select>
+            <label asp-for="@Model.PropertyOwners[i].Address_StateId"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Address_ZipCode" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Address_ZipCode" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Address_ZipCode" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Email" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Email" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Email" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.PropertyOwners[i].Phone" class="form-control" />
+            <label asp-for="@Model.PropertyOwners[i].Phone" class="control-label"></label>
+            <span asp-validation-for="@Model.PropertyOwners[i].Phone" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    }
+    <br />
+    <h5>Project Details</h5>
+    <input type="hidden" asp-for="@Model.Project.Id" />
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Project.Address_Line1" class="form-control" />
+            <label asp-for="@Model.Project.Address_Line1" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Project.Address_Line2" class="form-control" />
+            <label asp-for="@Model.Project.Address_Line2" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.Address_Line2" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Project.Address_Line3" class="form-control" />
+            <label asp-for="@Model.Project.Address_Line3" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.Address_Line3" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-floating">
+            <input asp-for="@Model.Project.Address_City" class="form-control" />
+            <label asp-for="@Model.Project.Address_City" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <select asp-for="@Model.Project.Address_StateId" class="form-select" asp-items="@Model.Project.Address_State"></select>
+            <label asp-for="@Model.Project.Address_StateId"></label>
+            <span asp-validation-for="@Model.Project.Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="@Model.Project.Address_ZipCode" class="form-control" />
+            <label asp-for="@Model.Project.Address_ZipCode" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.Address_ZipCode" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="@Model.Project.County" class="form-control" />
+            <label asp-for="@Model.Project.County" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.County" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Project.TaxParcel" class="form-control" />
+            <label asp-for="@Model.Project.TaxParcel" class="form-label fw-bold"></label>
+            <span asp-validation-for="@Model.Project.TaxParcel" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Project.LegalDescription" class="form-control" />
+            <label asp-for="@Model.Project.LegalDescription" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.LegalDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Project.StartDate" type="date" class="form-control" />
+            <label asp-for="@Model.Project.StartDate" class="form-label fw-bold"></label>
+            <span asp-validation-for="@Model.Project.StartDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Project.EstimatedCompletionDate" type="date" class="form-control" />
+            <label asp-for="@Model.Project.EstimatedCompletionDate" class="control-label"></label>
+            <span asp-validation-for="@Model.Project.EstimatedCompletionDate" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <h5>Lender Details</h5>
+    <input type="hidden" asp-for="@Model.Lender.Id" />
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.FirstName" class="form-control" />
+            <label asp-for="@Model.Lender.FirstName" class="form-control"></label>
+            <span asp-validation-for="@Model.Lender.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.MiddleName" class="form-control" />
+            <label asp-for="@Model.Lender.MiddleName" class="form-control"></label>
+            <span asp-validation-for="@Model.Lender.MiddleName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.LastName" class="form-control" />
+            <label asp-for="@Model.Lender.LastName" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-floating">
+            <input asp-for="@Model.Lender.BusinessName" class="form-control" />
+            <label asp-for="@Model.Lender.BusinessName" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.BusinessName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Lender.Address_Line1" class="form-control" />
+            <label asp-for="@Model.Lender.Address_Line1" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="@Model.Lender.Address_Line2" class="form-control" />
+            <label asp-for="@Model.Lender.Address_Line2" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.Address_Line2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.Address_City" class="form-control" />
+            <label asp-for="@Model.Lender.Address_City" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <select asp-for="@Model.Lender.Address_StateId" class="form-select" asp-items="@Model.Lender.Address_State"></select>
+            <label asp-for="@Model.Lender.Address_StateId"></label>
+            <span asp-validation-for="@Model.Lender.Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.Address_ZipCode" class="form-control" />
+            <label asp-for="@Model.Lender.Address_ZipCode" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.Address_ZipCode" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.OfficePhone" class="form-control" />
+            <label asp-for="@Model.Lender.OfficePhone" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.OfficePhone" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.CellPhone" class="form-control" />
+            <label asp-for="@Model.Lender.CellPhone" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.CellPhone" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="@Model.Lender.Email" class="form-control" />
+            <label asp-for="@Model.Lender.Email" class="control-label"></label>
+            <span asp-validation-for="@Model.Lender.Email" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="form-group mt-3 col-md-3">
+        <input type="submit" value="Update" class="btn btn-submit" />
+    </div>
+</form>
+<div>
+    <a asp-controller="NoticeOfCommencement" asp-action="Index">Back to overview</a>
+</div>

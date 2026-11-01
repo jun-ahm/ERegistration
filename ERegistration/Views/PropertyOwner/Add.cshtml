@@ -1,0 +1,122 @@
+@using ERegistration.ViewModels
+@model PropertyOwnerAddViewModel
+
+<title>Add Property Owner</title>
+<h2>Add a new property owner</h2>
+<hr />
+@if (ViewData["ErrorMessage"] != null)
+{
+<p class="text-danger">@ViewData["ErrorMessage"]</p>
+}
+
+<form method="post" asp-controller="PropertyOwner" asp-action="Add">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.FirstName" class="form-control" />
+            <label asp-for="PropertyOwner.FirstName" class="control-label fw-bold"></label>
+            <span asp-validation-for="PropertyOwner.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.MiddleName" class="form-control" />
+            <label asp-for="PropertyOwner.MiddleName" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.MiddleName" class="text-danger"></span> *@
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.LastName" class="form-control" />
+            <label asp-for="PropertyOwner.LastName" class="control-label fw-bold"></label>
+            <span asp-validation-for="PropertyOwner.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="PropertyOwner.Address_Line1" class="form-control" />
+            <label asp-for="PropertyOwner.Address_Line1" class="control-label fw-bold"></label>
+            <span asp-validation-for="PropertyOwner.Address_Line1" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="PropertyOwner.Address_Line2" class="form-control" />
+            <label asp-for="PropertyOwner.Address_Line2" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.Address_Line2" class="text-danger"></span> *@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-floating">
+            <input asp-for="PropertyOwner.Address_City" class="form-control" />
+            <label asp-for="PropertyOwner.Address_City" class="control-label fw-bold"></label>
+            <span asp-validation-for="PropertyOwner.Address_City" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <select asp-for="PropertyOwner.Address_StateId" class="form-select" asp-items="Model.States">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="States" class="fw-bold">State</label>
+            <span asp-validation-for="PropertyOwner.Address_StateId" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="PropertyOwner.Address_ZipCode" class="form-control" />
+            <label asp-for="PropertyOwner.Address_ZipCode" class="control-label fw-bold"></label>
+            <span asp-validation-for="PropertyOwner.Address_ZipCode" class="text-danger"></span>
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="PropertyOwner.County" class="form-control" />
+            <label asp-for="PropertyOwner.County" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.County" class="text-danger"></span> *@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-floating">
+            <input asp-for="PropertyOwner.MailingAddress_Line1" class="form-control" />
+            <label asp-for="PropertyOwner.MailingAddress_Line1" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.MailingAddress_Line1" class="text-danger"></span> *@
+        </div>
+        <div class="col-md-6 form-floating">
+            <input asp-for="PropertyOwner.MailingAddress_Line2" class="form-control" />
+            <label asp-for="PropertyOwner.MailingAddress_Line2" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.MailingAddress_Line2" class="text-danger"></span> *@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-floating">
+            <input asp-for="PropertyOwner.MailingAddress_City" class="form-control" />
+            <label asp-for="PropertyOwner.MailingAddress_City" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.MailingAddress_City" class="text-danger"></span> *@
+        </div>
+        <div class="col-md-3 form-floating">
+            <select asp-for="PropertyOwner.MailingAddress_StateId" class="form-select" asp-items="Model.States">
+                <option value="" selected></option>
+            </select>
+            <label asp-for="States">State</label>
+            @* <span asp-validation-for="PropertyOwner.MailingAddress_StateId" class="text-danger"></span> *@
+        </div>
+        <div class="col-md-3 form-floating">
+            <input asp-for="PropertyOwner.MailingAddress_ZipCode" class="form-control" />
+            <label asp-for="PropertyOwner.MailingAddress_ZipCode" class="control-label"></label>
+            @* <span asp-validation-for="PropertyOwner.MailingAddress_ZipCode" class="text-danger"></span> *@
+        </div>
+        <div class="col-md-3 form-floating">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.Phone" class="form-control" />
+            <label asp-for="PropertyOwner.Phone" class="control-label">Phone#</label>
+            <span asp-validation-for="PropertyOwner.Phone" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.Fax" class="form-control" />
+            <label asp-for="PropertyOwner.Fax" class="control-label">Fax#</label>
+            <span asp-validation-for="PropertyOwner.Fax" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-floating">
+            <input asp-for="PropertyOwner.Email" class="form-control" />
+            <label asp-for="PropertyOwner.Email" class="control-label fw-bold">Email</label>
+            <span asp-validation-for="PropertyOwner.Email" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="button" asp-controller="NoticeOfCommencement" asp-action="Index" class="btn btn-secondary">Cancel</button>
+    <button type="submit" asp-controller="PropertyOwner" asp-action="Add" class="btn btn-primary">Save</button>
+</form>
+<div>
+    <a asp-controller="NoticeOfCommencement" asp-action="Index">Back to Notice Of Commencement Creations</a>
+</div>

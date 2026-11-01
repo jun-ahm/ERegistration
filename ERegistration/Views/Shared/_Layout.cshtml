@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ERegistration</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <base href="/" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-white border-bottom box-shadow mb-3"> *@
+            <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark border-bottom bg-primary box-shadow mb-3" aria-label="ERegistration navigation header">
+                <div class="container-xl">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="images/image.png" width="150" height="50" class="d-inline-block align-top mb-2 mt-1"
+                             alt="ERegistration Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   id="nav-dropdown"
+                                   aria-expanded="false">
+                                    Notice Of Commencement
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+                                    <li>
+                                        <a asp-controller="NoticeOfCommencement" asp-action="Index" class="dropdown-item">
+                                            View all Notice of Commencements
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="NoticeOfCommencement" asp-action="Search" class="dropdown-item">
+                                            Search Notice of Commencements
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="NoticeOfCommencement" asp-action="Add" class="dropdown-item">
+                                            Add New Notice of Commencement
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="NoticeOfFunding" asp-action="Index">Notice of Funding</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="NoticeOfFurnishing" asp-action="Index">Notice of Furnishing (Labor/Material)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="NoticeOfCompletion" asp-action="Index">Notice of Completion - Closing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
+                            </li>
+                            @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Welcome @User.Identity?.Name - Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        @* <main role="main" class="pb-3"> *@
+        @RenderBody()
+        @* </main> *@
+    </div>
+
+    @* <footer class="border-top footer text-muted">
+            <div>
+                &copy; 2025 - ERegistration - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer> *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
