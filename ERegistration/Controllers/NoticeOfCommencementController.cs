@@ -17,7 +17,7 @@ namespace ERegistration.Controllers
         private readonly ILenderRepository _lenderRepository;
         private readonly ITitleCompanyRepository _titleCompanyRepository;
         private readonly INoticeOfCommencementRepository _noticeOfCommencementRepository;
-        private readonly ILookupValueRepository _lookupValueRepository
+        private readonly ILookupValueRepository _lookupValueRepository;
         private readonly ERegistrationDbContext _eRegistrationDbContext;
 
 
